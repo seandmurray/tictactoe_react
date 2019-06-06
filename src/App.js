@@ -24,19 +24,19 @@ class Board extends React.Component {
   handleClick(x, y) {
     let game = this.state.game;
     game.move(x, y);
-    this.setState({ game: game })
+    this.setState({ game: game });
   }
 
   reset() {
     let newGame = new TicTacToe();
-    this.setState({ game: newGame })
+    this.setState({ game: newGame });
   }
 
   // X,Y are the square co ordinates in the 2D array.
   renderSquare(x, y) {
     let value = this.state.game.value(x, y);
     // Note the call back "handleClick", that gets around the scope of the state.
-    return <Square value={value} onClick={() => this.handleClick(x,y)} />
+    return <Square value={value} onClick={() => this.handleClick(x,y)} />;
   }
 
   renderBoard() {
@@ -46,8 +46,8 @@ class Board extends React.Component {
     return this.state.game.squares().map((rows, x) => {
       return <div className="board-row"> {
         rows.map((value, y) => this.renderSquare(x, y))
-      } </div>
-    })
+      } </div>;
+    });
   }
 
   render() {
@@ -55,7 +55,8 @@ class Board extends React.Component {
     if (this.state.game.isDone()) {
       if (false !== this.state.game.winner()) {
         status = 'Winner: ' + this.state.game.winner();
-      } else {
+      }
+      else {
         status = 'Game has no winner.';
       }
     }
